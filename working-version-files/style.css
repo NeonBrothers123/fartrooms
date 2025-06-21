@@ -1,0 +1,556 @@
+/* Import a monospace font for that retro terminal feel */
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap");
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    background-color: #1a1a1a; /* Dark background from reference */
+    color: #cccccc; /* Light grey for general text */
+    line-height: 1.4;
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* Header and Title */
+header {
+    margin-bottom: 40px;
+}
+
+.title-art {
+    margin-bottom: 20px;
+}
+
+.pixel-title {
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    font-size: 48px;
+    font-weight: bold;
+    color: #ff00ff; /* Neon purple but more readable */
+    text-shadow: 0 0 3px #ff00ff; /* Subtle glow */
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 10px 0;
+    position: relative;
+}
+
+.subtitle p {
+    font-size: 16px;
+    color: #00ffff; /* Cyan from screenshot */
+    text-transform: lowercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.subtitle p:nth-of-type(2),
+.subtitle p:nth-of-type(3) {
+    color: #cccccc; /* Grey for descriptive text */
+    font-size: 14px;
+}
+
+.subtitle .link {
+    color: #00ffff; /* Cyan for links */
+    text-decoration: none;
+    border-bottom: 1px dotted #00ffff;
+}
+
+.subtitle .link:hover {
+    color: #ff00ff; /* Purple on hover */
+    border-color: #ff00ff;
+}
+
+.warning-box {
+    border: 1px solid #ffff00; /* Yellow border from screenshot */
+    padding: 10px 20px;
+    margin: 30px auto;
+    max-width: 600px;
+    font-size: 12px;
+    color: #ffff00; /* Yellow text from screenshot */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Navigation Tabs */
+.nav-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    gap: 10px;
+}
+
+.tab-btn {
+    background-color: transparent;
+    color: #cccccc;
+    border: 1px solid #666666;
+    padding: 10px 20px;
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    font-size: 14px;
+    text-transform: lowercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+    border-color: #00ffff;
+    color: #00ffff;
+}
+
+.tab-btn.active {
+    background-color: #00ffff;
+    color: #1a1a1a;
+    border-color: #00ffff;
+}
+
+/* Sections */
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+/* Main Content */
+main {
+    padding: 20px 0;
+}
+
+.fart-generator {
+    margin-bottom: 40px;
+}
+
+.generate-btn {
+    background-color: #00ff00; /* Green button from screenshot */
+    color: #1a1a1a; /* Dark text for button */
+    border: none;
+    padding: 15px 30px;
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: lowercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 5px #00ff00; /* Subtle green glow */
+}
+
+.generate-btn:hover {
+    background-color: #00cc00; /* Darker green on hover */
+    box-shadow: 0 0 10px #00ff00;
+    transform: scale(1.05);
+}
+
+.generate-btn:active {
+    transform: scale(0.95);
+}
+
+.btn-icon {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+/* Share Button */
+.share-btn {
+    background-color: #ffff00;
+    color: #1a1a1a;
+    border: none;
+    padding: 10px 20px;
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: lowercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    box-shadow: 0 0 5px #ffff00;
+}
+
+.share-btn:hover {
+    background-color: #cccc00;
+    box-shadow: 0 0 10px #ffff00;
+    transform: scale(1.05);
+}
+
+/* Loading animation for button */
+.generate-btn.loading {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Fart Display Area */
+.fart-display {
+    border: 1px solid #00ffff; /* Cyan border */
+    background-color: rgba(0, 255, 255, 0.05); /* Light cyan background */
+    padding: 20px;
+    margin-top: 30px;
+    animation: fadeIn 0.5s ease-in;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fart-display.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Fart Art */
+.fart-art {
+    margin-bottom: 20px;
+    overflow-x: auto;
+}
+
+.fart-art pre {
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    font-size: 12px; /* Adjusted for readability */
+    color: #00ff00; /* Green for fart art */
+    text-shadow: 0 0 3px #00ff00; /* Subtle glow */
+    white-space: pre;
+    margin: 0;
+    line-height: 1.1;
+}
+
+/* Fart Info */
+.fart-info {
+    text-align: left;
+    max-width: 400px;
+    margin: 0 auto;
+    color: #cccccc; /* Light grey for info text */
+}
+
+.fart-info p {
+    margin-bottom: 5px;
+}
+
+.fart-info strong {
+    color: #ffff00; /* Yellow for labels */
+}
+
+/* Conversations Section */
+.conversations-header {
+    margin-bottom: 30px;
+}
+
+.conversations-title {
+    font-size: 18px;
+    color: #00ffff;
+    text-transform: lowercase;
+    margin-bottom: 5px;
+}
+
+.conversations-subtitle {
+    font-size: 12px;
+    color: #cccccc;
+    text-transform: lowercase;
+}
+
+.conversations-list {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.conversation-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    margin-bottom: 2px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid #666666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.conversation-item:hover {
+    background-color: rgba(0, 255, 255, 0.1);
+    border-left-color: #00ffff;
+}
+
+.conversation-triangle {
+    color: #cccccc;
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+.conversation-id {
+    color: #cccccc;
+    margin-right: 15px;
+    font-size: 12px;
+    min-width: 60px;
+}
+
+.conversation-title {
+    color: #ffff00;
+    text-decoration: underline;
+    flex-grow: 1;
+    font-size: 14px;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    border: 1px solid #00ffff;
+    max-width: 90%;
+    max-height: 90%;
+    width: 800px;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #666666;
+}
+
+.modal-header h3 {
+    color: #00ffff;
+    font-size: 16px;
+    text-transform: lowercase;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #cccccc;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-btn:hover {
+    color: #ff00ff;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+/* Chat Section */
+.chat-section {
+    margin-top: 30px;
+    border-top: 1px solid #666666;
+    padding-top: 20px;
+}
+
+.chat-messages {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid #333333;
+}
+
+.chat-message {
+    margin-bottom: 15px;
+    padding: 8px 12px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid #666666;
+}
+
+.chat-message.ai-message {
+    border-left-color: #ff00ff;
+}
+
+.chat-message.human-message {
+    border-left-color: #00ffff;
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.message-username {
+    color: #ffff00;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.message-timestamp {
+    color: #666666;
+    font-size: 10px;
+}
+
+.message-content {
+    color: #cccccc;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.chat-input-section {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.chat-input-section input {
+    background-color: #333333;
+    border: 1px solid #666666;
+    color: #cccccc;
+    padding: 8px 12px;
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    font-size: 12px;
+}
+
+.chat-input-section input:focus {
+    outline: none;
+    border-color: #00ffff;
+}
+
+#usernameInput {
+    width: 150px;
+}
+
+#messageInput {
+    flex-grow: 1;
+}
+
+.send-btn {
+    background-color: #00ff00;
+    color: #1a1a1a;
+    border: none;
+    padding: 8px 15px;
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: lowercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.send-btn:hover {
+    background-color: #00cc00;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .pixel-title {
+        font-size: 32px;
+        letter-spacing: 4px;
+    }
+    .subtitle p {
+        font-size: 14px;
+    }
+    .generate-btn {
+        padding: 12px 25px;
+        font-size: 16px;
+    }
+    .fart-art pre {
+        font-size: 10px;
+    }
+    .modal-content {
+        width: 95%;
+        max-height: 95%;
+    }
+    .chat-input-section {
+        flex-direction: column;
+        gap: 5px;
+    }
+    .chat-input-section input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .pixel-title {
+        font-size: 24px;
+        letter-spacing: 2px;
+    }
+    .subtitle p {
+        font-size: 12px;
+    }
+    .warning-box {
+        font-size: 10px;
+        padding: 8px;
+    }
+    .generate-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    .fart-art pre {
+        font-size: 8px;
+    }
+}
+
+/* Terminal-like background effects */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(to bottom, #1a1a1a, #1a1a1a 1px, rgba(0, 255, 0, 0.02) 1px, rgba(0, 255, 0, 0.02) 2px); /* Subtle green scanlines */
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Scrollbar styling for webkit browsers */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ff00ff; /* Purple scrollbar */
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #cc00cc;
+}
+
